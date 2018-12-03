@@ -1,0 +1,2 @@
+/Users/VeartDesigns/Documents/work/MonLaboral/Freelance/Museu Natural Granollers/Museu Natural Granollers/obj/Debug/VuforiaScripts.csprojAssemblyReference.cache
+/Users/VeartDesigns/Documents/work/MonLaboral/Freelance/Museu Natural Granollers/Museu Natural Granollers/obj/Debug/VuforiaScripts.csproj.CoreCompileInputs.cache

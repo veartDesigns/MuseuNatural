@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8df68f15ec6400aa799e89d1376fa8, type: 3}
+  m_Name: AllSequenceInfos
+  m_EditorClassIdentifier: Assembly-CSharp::AllSequenceInfos
+  SequenceInfos:
+  - LanguageTag: 0
+    Animations:
+      ActionObjects:
+      - {fileID: 1781647897177292, guid: 895573751b7f84f569ff258708f801ba, type: 2}
+      AnimationName: Sequence01
+  - LanguageTag: 0
+    Animations:
+      ActionObjects:
+      - {fileID: 1781647897177292, guid: fa8f167ba46cb42f092ed410c50510aa, type: 2}
+      AnimationName: Sequence02
