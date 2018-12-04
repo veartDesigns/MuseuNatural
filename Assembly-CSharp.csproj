@@ -10,7 +10,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>
     </RootNamespace>
-    <ProjectGuid>{782D8B54-0B83-0779-2949-156407B54341}</ProjectGuid>
+    <ProjectGuid>{43271006-92B5-A443-E7EC-4BF6CACF2A8C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -128,10 +128,12 @@
     <Compile Include="Assets\VeartDesigns\Scripts\InitialController.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Initializer.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Language\LanguageAllInfo.cs" />
+    <Compile Include="Assets\VeartDesigns\Scripts\Language\LanguageInfo.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Language\LanguageInfos.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Language\Languages.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Language\LanguageTags.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\MainController.cs" />
+    <Compile Include="Assets\VeartDesigns\Scripts\MovementController.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Sequences\AllSequenceInfos.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Sequences\SequenceInfo.cs" />
     <None Include="Assets\Vuforia\Shaders\ColoredLines.shader" />
@@ -157,17 +159,26 @@
     <None Include="Assets\Vuforia\Shaders\DepthContour.shader" />
     <None Include="Assets\Vuforia\Shaders\Text3D.shader" />
     <None Include="Assets\SamplesResources\Shaders\GroundBlend.shader" />
+    <Reference Include="Unity.RenderPipelines.Core.Editor">
+      <HintPath>/Users/VeartDesigns/Documents/work/MonLaboral/Freelance/MuseuNatural/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>/Users/VeartDesigns/Documents/work/MonLaboral/Freelance/MuseuNatural/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>/Users/VeartDesigns/Documents/work/MonLaboral/Freelance/Museu Natural Granollers/Museu Natural Granollers/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>/Users/VeartDesigns/Documents/work/MonLaboral/Freelance/MuseuNatural/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>/Users/VeartDesigns/Documents/work/MonLaboral/Freelance/Museu Natural Granollers/Museu Natural Granollers/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>/Users/VeartDesigns/Documents/work/MonLaboral/Freelance/MuseuNatural/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>/Users/VeartDesigns/Documents/work/MonLaboral/Freelance/Museu Natural Granollers/Museu Natural Granollers/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>/Users/VeartDesigns/Documents/work/MonLaboral/Freelance/MuseuNatural/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
-    <Reference Include="com.unity.standardevents">
-      <HintPath>/Users/VeartDesigns/Documents/work/MonLaboral/Freelance/Museu Natural Granollers/Museu Natural Granollers/Library/ScriptAssemblies/com.unity.standardevents.dll</HintPath>
+    <Reference Include="Unity.RenderPipelines.Core.IncludePaths">
+      <HintPath>/Users/VeartDesigns/Documents/work/MonLaboral/Freelance/MuseuNatural/Library/ScriptAssemblies/Unity.RenderPipelines.Core.IncludePaths.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.StandardEvents">
+      <HintPath>/Users/VeartDesigns/Documents/work/MonLaboral/Freelance/MuseuNatural/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -403,15 +414,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="VuforiaScripts.csproj">
-      <Project>{5D8851AA-4810-B4F7-F8A0-5D605E67F857}</Project>
+      <Project>{F1A9C572-EA9C-7C4E-7794-A995F6DB4147}</Project>
       <Name>VuforiaScripts</Name>
     </ProjectReference>
     <ProjectReference Include="VuforiaEditorScripts.csproj">
-      <Project>{8966734D-D17E-244F-ED22-384214C08518}</Project>
+      <Project>{83C12D6F-CAF7-0569-1DF5-ED708347431C}</Project>
       <Name>VuforiaEditorScripts</Name>
     </ProjectReference>
     <ProjectReference Include="VuforiaVersionCheckerScripts.csproj">
-      <Project>{7DE26BC0-3836-EA42-E7E7-4D68446B57E6}</Project>
+      <Project>{8B5F975C-C274-3D0E-1CE6-78F168E5AC3F}</Project>
       <Name>VuforiaVersionCheckerScripts</Name>
     </ProjectReference>
   </ItemGroup>
