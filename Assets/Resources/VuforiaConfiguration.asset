@@ -8,21 +8,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -2067402452, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Script: {fileID: -2067402452, guid: bab6fa851cf5a1a4bba3cec5f191cb8e, type: 3}
   m_Name: VuforiaConfiguration
   m_EditorClassIdentifier: 
   vuforia:
     vuforiaLicenseKey: AeC2Ogb/////AAABmbZey2mLcUzom51NFs/S9WcHW9fk0nDri6pRYNJp5aOMbfkgi2Egxn3qX18qysed04g9LDDKbTsjH4p9SPsW/yBxPYnO62ZdCEJHDxnqJSbd0xf7bhlx09YNkYvvxsFy6T/WZAFXA6bJMLgmCsGyWyhkt8FTZJJJf/xb2Ug0CcttUlVtKwwDEkPHazpkyFuvF/5sVdq5ppBS7EJ4/xi3r6ZzgyYZnhxK8uWNOKWvB1mFg5kRq+n4uiTIX3/90Z0GJnaOD/I+zSYTJdZH/DjIBODmrb0YOobpPf5n4hYlc5QBKCVODfnXQvrnXnC5/6b+yXGXV6QIxLLB98QNqvCFJfVlS4SKXWkekU3yVIrC4L8T
-    ufoLicenseKey: QVhiM0Y1Ly8vLy8vQUFBQUtPbnFIeHJFSGs1N3VrMlg4U050eVBzK2pkOFZxMDhrazlwYjBsYS9aZUIxQlV1ckZWcWt0ZllSQWpnT2tIRlY2VzdOMDRTRjNYRUhmbTF5L1BnYlB4eWdHWEF6RUNheXowc3dyNVNYa2ozdERuRjhka1FpOHRscHdkMDcrcEJEY1FjTjNJcUM1bEgwOTYzQkdZdjRsQStRb0hSQU9nRGthelp5TlY0WHVwWU9EaE05NWw5bXAzbnBDMjM5MWZBWXBFdEdiL2loTDNab3N4b25ZblhjK1JtSS9wLzRoTDIwVGhmTXR6WFJNYkpUTXZLZzJoQ0N0TEJXNEptZ0pSOUtSdStzQWM3QjVNOWFFMGVHQ1dUT1VRSUUweEpiZC9ZL2cvS29iNDhBRXdQOGFwbWR5NmRWU0FHU2psVzRZY2FEU2Zud3J1ZHhucVNmSUZiajNTUnIzM0lKVlFIaW1rL0oyOGNFeDdyekcySXg=
+    ufoLicenseKey: QVdGYm5Pdi8vLy8vQUFBQUtPSjBXcGhnYWtsZWpsVXBYNW51aFk2Snp0TUIxYm44SkxmNjY3dkdwVWVwT0wvTmFXS3VPS3JIUm16OGkxRlQ5elRGd0FDZG9UQVFPSE1WbVJ1dnBtWmZxOHBKcEsrS0VncW1KYldMVnRBTEdlNlhPMzRNcXd4YUtPbzYzSno1TzErOXpRNVpuOER5V0c3amxidlpyL2VXazEvMFZKcTBGOEU0R2Q3QU1vbkxNOXlEMWRWS082YVRvdyt6OWxJYVpWNWJjcDF6YnZqeVhlYmhZazh6UmtKNnN0NEt1RkRHaHNmRUFncVJsNXFtQXNYZU5uUVQxdENmVmp5bGJGNC83cm9BR29heGNaUFhhNWcyUWV2QUdYZEhaNGtFTW5xemFNQm8vcjZvSmFqbXRSRW1NQ2t3R0lVWExndElpUmpTNmdub3d5YVdkQ21EMDhzckRSUzVIU0lhYUpGcnNTdmxyR21JNFNhQVZGcjc=
     delayedInitialization: 0
     cameraDeviceModeSetting: -2
     maxSimultaneousImageTargets: 1
     maxSimultaneousObjectTargets: 1
     useDelayedLoadingObjectTargets: 0
-    cameraDirection: 1
+    cameraDirection: 0
     mirrorVideoBackground: 0
-    version: 7.5.20
-    eulaAccepted: 1
+    version: 7.5.26
+    eulaAcceptedVersions: '{"Values":["7.5"]}'
   digitalEyewear:
     cameraOffset: 0.06
     distortionRenderingLayer: 31

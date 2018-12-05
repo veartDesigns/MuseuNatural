@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,12 +12,14 @@ public class ActionController : MonoBehaviour {
 
     private int _currentSequence;
     private SequenceInfo _currentSequenceInfo;
-    Animator[] _currentAnimators;
+    private List<Animator> _currentAnimators;
 
     private bool _firstTrack = true;
 
     private void Start()
     {
+        _currentAnimators = new List<Animator>();
+
         defaultTrackableEventHandler.TrackingLost += OnTrackingLost;
         defaultTrackableEventHandler.TrackingFound += OnTrackingFound;
     }
@@ -51,7 +52,7 @@ public class ActionController : MonoBehaviour {
     {
         if (_currentAnimators == null) return;
 
-        for (int i = 0; i < _currentAnimators.Length; i++)
+        for (int i = 0; i < _currentAnimators.Count; i++)
         {
             Animator animator = _currentAnimators[i];
             animator.enabled = enable;
@@ -85,15 +86,14 @@ public class ActionController : MonoBehaviour {
 
         for (int i = 0; i < objectsToAnimate.Count; i++)
         {
-            GameObject objectToAnimate = Instantiate(objectsToAnimate[i]);
+            GameObject objectToAnimate = Instantiate(objectsToAnimate[i], ARContainer.transform);
             objectToAnimate.name = "sequence_" + _currentSequence + "_" + i;
-            objectToAnimate.transform.parent = ARContainer.transform;
             string animationName = animations.AnimationName;
-            Animator animation = objectToAnimate.transform.GetComponent<Animator>();
+            Animator animation = objectToAnimate.transform.GetComponentInChildren<Animator>();
+            _currentAnimators.Add(animation);
             animation.Play(animationName);
 
         }
-        _currentAnimators = ARContainer.GetComponentsInChildren<Animator>();
     }
 
     private void CleanARContainerObjects()
@@ -105,6 +105,7 @@ public class ActionController : MonoBehaviour {
             ARObject.transform.parent = null;
             Destroy(ARObject);
         }
+        _currentAnimators.Clear();
     }
 
     public void NextSequence(){

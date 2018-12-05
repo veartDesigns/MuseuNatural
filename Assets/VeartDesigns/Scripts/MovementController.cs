@@ -43,7 +43,7 @@ public class MovementController : MonoBehaviour
         if (timePassed >= _secondsToBackToInit)
         {
             _startTime = Time.time;
-            MainController.Instance.BackToInitScene();
+           // MainController.Instance.BackToInitScene();
         }
     }
 
