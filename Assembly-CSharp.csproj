@@ -127,11 +127,14 @@
     <Compile Include="Assets\VeartDesigns\Scripts\CreditsController.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\InitialController.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Initializer.cs" />
+    <Compile Include="Assets\VeartDesigns\Scripts\Language\CatalanInfos.cs" />
+    <Compile Include="Assets\VeartDesigns\Scripts\Language\EnglishInfos.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Language\LanguageAllInfo.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Language\LanguageInfo.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Language\LanguageInfos.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Language\Languages.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Language\LanguageTags.cs" />
+    <Compile Include="Assets\VeartDesigns\Scripts\Language\SpanishInfos.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\MainController.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\MovementController.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Sequences\AllSequenceInfos.cs" />
@@ -159,12 +162,6 @@
     <None Include="Assets\Vuforia\Shaders\DepthContour.shader" />
     <None Include="Assets\Vuforia\Shaders\Text3D.shader" />
     <None Include="Assets\SamplesResources\Shaders\GroundBlend.shader" />
-    <Reference Include="Unity.RenderPipelines.Core.Editor">
-      <HintPath>/Users/VeartDesigns/Documents/work/MonLaboral/Freelance/MuseuNatural/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>/Users/VeartDesigns/Documents/work/MonLaboral/Freelance/MuseuNatural/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>/Users/VeartDesigns/Documents/work/MonLaboral/Freelance/MuseuNatural/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -173,9 +170,6 @@
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>/Users/VeartDesigns/Documents/work/MonLaboral/Freelance/MuseuNatural/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.IncludePaths">
-      <HintPath>/Users/VeartDesigns/Documents/work/MonLaboral/Freelance/MuseuNatural/Library/ScriptAssemblies/Unity.RenderPipelines.Core.IncludePaths.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>/Users/VeartDesigns/Documents/work/MonLaboral/Freelance/MuseuNatural/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

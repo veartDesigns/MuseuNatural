@@ -1225,7 +1225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 680590ed5b9b845388ec455e9aab7bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugGyro: 1
+  DebugGyro: 0
   _secondsToBackToInit: 10
   MovementeSensibility: 5
 --- !u!1 &1740922084

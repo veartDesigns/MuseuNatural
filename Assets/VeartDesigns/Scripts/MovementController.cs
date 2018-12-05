@@ -7,7 +7,7 @@ public class MovementController : MonoBehaviour
 
     public bool DebugGyro;
     public float _secondsToBackToInit = 10f;
-    public float MovementeSensibility = 5;
+    public float MovementeSensibility = 2;
     private Quaternion _oldMovementValue = Quaternion.identity;
     Gyroscope m_Gyro;
     private float _startTime;
@@ -24,7 +24,7 @@ public class MovementController : MonoBehaviour
         Quaternion GyroMovement = m_Gyro.attitude;
         float currentMovementValue = Quaternion.Angle(m_Gyro.attitude, _oldMovementValue);
         bool moved = false;
-        Debug.Log("diff " + currentMovementValue);
+
         if (currentMovementValue > MovementeSensibility)
         {
             _oldMovementValue = GyroMovement;
@@ -39,7 +39,7 @@ public class MovementController : MonoBehaviour
 
         float currentTime = Time.time;
         float timePassed = currentTime - _startTime;
-        Debug.Log("TimePassed " + timePassed);
+        //Debug.Log("TimePassed " + timePassed);
         if (timePassed >= _secondsToBackToInit)
         {
             _startTime = Time.time;
@@ -52,12 +52,14 @@ public class MovementController : MonoBehaviour
         if (DebugGyro)
         {
             float currentMovementValue = Quaternion.Angle(m_Gyro.attitude, _oldMovementValue);
-
+            float currentTime = Time.time;
+            float timePassed = currentTime - _startTime;
             //Output the rotation rate, attitude and the enabled state of the gyroscope as a Label
             GUI.Label(new Rect(500, 300, 200, 40), "Gyro rotation rate " + m_Gyro.rotationRate);
             GUI.Label(new Rect(500, 350, 200, 40), "Gyro attitude" + m_Gyro.attitude);
             GUI.Label(new Rect(500, 400, 200, 40), "Gyro enabled : " + m_Gyro.enabled);
             GUI.Label(new Rect(500, 450, 200, 40), "Gyro diff : " + currentMovementValue);
+            GUI.Label(new Rect(500,500, 200, 40), "timePassed : " + timePassed);
         }
     }
 }
