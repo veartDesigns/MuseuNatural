@@ -13,6 +13,5 @@ public class Initializer : MonoBehaviour
 
         DontDestroyOnLoad(main);
         Destroy(this);
-
     }
 }

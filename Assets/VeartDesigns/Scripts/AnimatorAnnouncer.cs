@@ -7,6 +7,7 @@ public class AnimatorAnnouncer : MonoBehaviour {
     private ActionController _actionController;
 
     public void SetActionController(ActionController actionController){
+
         _actionController = actionController;
     }
     // Use this for initialization

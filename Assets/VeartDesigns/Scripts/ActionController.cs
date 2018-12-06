@@ -14,13 +14,13 @@ public class ActionController : MonoBehaviour
     public Text SequencePage;
     public GameObject EndPanel;
     public UserActionController UserActionController;
-    private int _currentSequence;
+    private int _currentSequence = -1;
     private SequenceInfo _currentSequenceInfo;
     private List<Animator> _currentAnimators;
     private bool _animationRunning;
     private float _animationStartTime;
     private bool _firstTrack = true;
-    private bool _oldAnimationRunningState;
+    private bool _trackingActive;
 
     private void Awake()
     {
@@ -37,8 +37,7 @@ public class ActionController : MonoBehaviour
 
     private void OnDestroy()
     {
-        defaultTrackableEventHandler.TrackingLost -= OnTrackingLost;
-        defaultTrackableEventHandler.TrackingFound -= OnTrackingFound;
+        DesuscribeToTracker();
     }
     private void Update()
     {
@@ -49,20 +48,19 @@ public class ActionController : MonoBehaviour
     }
 
     public void AnimationStart(){
-
+        Debug.Log("ANIMATION STARTED");
         _animationRunning = true;
         _animationStartTime = Time.time;
     }
     public void AnimationEnd()
     {
+        Debug.Log("ANIMATION ENDED");
         OnAnimationFinished();
         _animationRunning = false;
     }
     private void OnAnimationFinished()
     {
-        Debug.Log("OnAnimationFinished " + _currentSequence + " " + AllSequenceInfos.SequenceInfos.Count);
-
-        if((_currentSequence) >= AllSequenceInfos.SequenceInfos.Count)
+        if((_currentSequence) >= AllSequenceInfos.SequenceInfos.Count-1)
         {
             ShowEndPanel(true);
         }
@@ -91,22 +89,26 @@ public class ActionController : MonoBehaviour
     public void RepeatAnimation(){
 
         EndPanel.SetActive(false);
-        _currentSequence = 0;
+        _currentSequence = -1;
         NextSequence();
     }
 
     private void OnTrackingLost()
     {
+        _trackingActive = false;
+
         EnableDisableAnimators(false);
         ScanMessage.SetActive(true);
     }
 
     private void OnTrackingFound()
     {
+        _trackingActive = true;
+
         if (_firstTrack)
         {
             _firstTrack = false;
-            _currentSequence = 0;
+            _currentSequence = -1;
             NextSequence();
         }
 
@@ -127,6 +129,7 @@ public class ActionController : MonoBehaviour
 
     public void StartSequence(int sequence)
     {
+        Debug.Log("PREStartSequence" + sequence);
         if (sequence <= 0)
         {
             _currentSequence = 0;
@@ -149,7 +152,6 @@ public class ActionController : MonoBehaviour
         _currentSequenceInfo = AllSequenceInfos.GetSequenceInfo(_currentSequence);
         ExplanationText.text = MainController.Instance.GetText(_currentSequenceInfo.LanguageTag);
         AnimationsInfo animations = _currentSequenceInfo.Animations;
-
         List<GameObject> objectsToAnimate = animations.ActionObjects;
 
         for (int i = 0; i < objectsToAnimate.Count; i++)
@@ -157,6 +159,7 @@ public class ActionController : MonoBehaviour
             GameObject objectToAnimate = Instantiate(objectsToAnimate[i], ARContainer.transform);
             objectToAnimate.name = "sequence_" + _currentSequence + "_" + i;
             string animationName = animations.AnimationName;
+
             if (i == 0)
             {
                 AnimatorAnnouncer animatorAnnouncer = objectToAnimate.AddComponent<AnimatorAnnouncer>();
@@ -165,6 +168,21 @@ public class ActionController : MonoBehaviour
              Animator animation = objectToAnimate.transform.GetComponentInChildren<Animator>();
             _currentAnimators.Add(animation);
             animation.Play(animationName);
+
+            if(!_trackingActive) EnableDisableRenderer(objectToAnimate, _trackingActive);
+        }
+
+        EnableDisableAnimators(_trackingActive);
+    }
+
+    private void EnableDisableRenderer(GameObject objectToAnimate,bool enable)
+    {
+        Renderer[] renderers = objectToAnimate.transform.GetComponentsInChildren<Renderer>();
+
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            Renderer renderer = renderers[i];
+            renderer.enabled = enable;
         }
     }
 
@@ -183,8 +201,8 @@ public class ActionController : MonoBehaviour
 
     public void NextSequence()
     {
-        StartSequence(_currentSequence);
         _currentSequence++;
+        StartSequence(_currentSequence);
     }
 
     public void BackSequence()
@@ -193,13 +211,17 @@ public class ActionController : MonoBehaviour
 
         if (_currentAnimators != null)
         {
-            sequenceTime = _animationStartTime-Time.time;
+            sequenceTime = Time.time - _animationStartTime;
         }
-        Debug.Log("BackSequence sequenceTime " + sequenceTime);
+        Debug.Log("BackSequence  " + _animationRunning + "  "+ sequenceTime + " "+ _currentSequence);
 
         if (!_animationRunning || sequenceTime < 3f)
         {
+            Debug.Log("FORCE REAL BACK");
             _currentSequence--;
+
+        }else{
+            Debug.Log("PLAY SAME");
         }
 
         StartSequence(_currentSequence);
@@ -220,6 +242,13 @@ public class ActionController : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
+        DesuscribeToTracker();
         MainController.Instance.BackToInitScene();
+    }
+
+    private void DesuscribeToTracker()
+    {
+        defaultTrackableEventHandler.TrackingLost -= OnTrackingLost;
+        defaultTrackableEventHandler.TrackingFound -= OnTrackingFound;
     }
 }
