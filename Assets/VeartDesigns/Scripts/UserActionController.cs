@@ -23,7 +23,9 @@ public class UserActionController : MonoBehaviour
             CheckTime();
     }
 
-    private void RestartCounterTime(){
+    public void RestartCounterTime(){
+
+//        Debug.Log("RestartCounterTime");
 
         _startTime = Time.time;
     }

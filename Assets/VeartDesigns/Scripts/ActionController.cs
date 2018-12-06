@@ -1,20 +1,31 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ActionController : MonoBehaviour {
+public class ActionController : MonoBehaviour
+{
 
     public GameObject ARContainer;
     public AllSequenceInfos AllSequenceInfos;
     public DefaultTrackableEventHandler defaultTrackableEventHandler;
     public GameObject ScanMessage;
-    public Text ExplanationText; 
-
+    public Text ExplanationText;
+    public Text SequencePage;
+    public GameObject EndPanel;
+    public UserActionController UserActionController;
     private int _currentSequence;
     private SequenceInfo _currentSequenceInfo;
     private List<Animator> _currentAnimators;
-
+    private bool _animationRunning;
+    private float _animationStartTime;
     private bool _firstTrack = true;
+    private bool _oldAnimationRunningState;
+
+    private void Awake()
+    {
+        ShowEndPanel(false);
+    }
 
     private void Start()
     {
@@ -29,6 +40,60 @@ public class ActionController : MonoBehaviour {
         defaultTrackableEventHandler.TrackingLost -= OnTrackingLost;
         defaultTrackableEventHandler.TrackingFound -= OnTrackingFound;
     }
+    private void Update()
+    {
+        if(_animationRunning)
+        {
+            UserActionController.RestartCounterTime();
+        }
+    }
+
+    public void AnimationStart(){
+
+        _animationRunning = true;
+        _animationStartTime = Time.time;
+    }
+    public void AnimationEnd()
+    {
+        OnAnimationFinished();
+        _animationRunning = false;
+    }
+    private void OnAnimationFinished()
+    {
+        Debug.Log("OnAnimationFinished " + _currentSequence + " " + AllSequenceInfos.SequenceInfos.Count);
+
+        if((_currentSequence) >= AllSequenceInfos.SequenceInfos.Count)
+        {
+            ShowEndPanel(true);
+        }
+
+        if(_currentSequence < AllSequenceInfos.SequenceInfos.Count - 1 ){
+
+            AnimateNextButton(true);
+        }
+    }
+
+    private void AnimateNextButton(bool state)
+    {
+        Debug.Log("AnimateNextButton "+ state);
+    }
+
+    private void ShowEndPanel(bool state)
+    {
+        EndPanel.SetActive(state);
+
+    }
+    public void CloseEndPanel()
+    {
+        ShowEndPanel(false);
+        Debug.Log("Close Panel");
+    }
+    public void RepeatAnimation(){
+
+        EndPanel.SetActive(false);
+        _currentSequence = 0;
+        NextSequence();
+    }
 
     private void OnTrackingLost()
     {
@@ -38,10 +103,11 @@ public class ActionController : MonoBehaviour {
 
     private void OnTrackingFound()
     {
-        if(_firstTrack){
-
+        if (_firstTrack)
+        {
             _firstTrack = false;
-            StartSequence(_currentSequence);
+            _currentSequence = 0;
+            NextSequence();
         }
 
         EnableDisableAnimators(true);
@@ -59,22 +125,24 @@ public class ActionController : MonoBehaviour {
         }
     }
 
-
     public void StartSequence(int sequence)
     {
-        if (sequence < 0) 
+        if (sequence <= 0)
         {
-            Debug.Log("It's first sequence");
-            _currentSequence = 0; 
+            _currentSequence = 0;
         }
         if (sequence >= AllSequenceInfos.SequenceInfos.Count)
         {
-            Debug.Log("It's LAST sequence");
             _currentSequence = AllSequenceInfos.SequenceInfos.Count-1;
+            Debug.Log("StartSequence Blocked " + _currentSequence);
             return;
         }
 
-        Debug.Log("SEQUENCE " + _currentSequence + " of " + AllSequenceInfos.SequenceInfos.Count);
+        Debug.Log("StartSequence " + _currentSequence);
+
+        AnimateNextButton(false);
+
+        SequencePage.text = (_currentSequence+1) + "/" + AllSequenceInfos.SequenceInfos.Count;
 
         CleanARContainerObjects();
 
@@ -89,10 +157,14 @@ public class ActionController : MonoBehaviour {
             GameObject objectToAnimate = Instantiate(objectsToAnimate[i], ARContainer.transform);
             objectToAnimate.name = "sequence_" + _currentSequence + "_" + i;
             string animationName = animations.AnimationName;
-            Animator animation = objectToAnimate.transform.GetComponentInChildren<Animator>();
+            if (i == 0)
+            {
+                AnimatorAnnouncer animatorAnnouncer = objectToAnimate.AddComponent<AnimatorAnnouncer>();
+                animatorAnnouncer.SetActionController(this);
+            }
+             Animator animation = objectToAnimate.transform.GetComponentInChildren<Animator>();
             _currentAnimators.Add(animation);
             animation.Play(animationName);
-
         }
     }
 
@@ -100,7 +172,8 @@ public class ActionController : MonoBehaviour {
     {
         int containerObjects = ARContainer.transform.childCount;
 
-        for(int i= containerObjects-1; i >= 0; i-- ){
+        for (int i = containerObjects - 1; i >= 0; i--)
+        {
             GameObject ARObject = ARContainer.transform.GetChild(i).gameObject;
             ARObject.transform.parent = null;
             Destroy(ARObject);
@@ -108,28 +181,25 @@ public class ActionController : MonoBehaviour {
         _currentAnimators.Clear();
     }
 
-    public void NextSequence(){
-
-        _currentSequence++;
+    public void NextSequence()
+    {
         StartSequence(_currentSequence);
+        _currentSequence++;
     }
 
-    public void BackSequence(){
-
+    public void BackSequence()
+    {
         float sequenceTime = 999;
-        bool animationRunning = true;
 
-        if (_currentAnimators != null) {
-
-            sequenceTime = GetAnimationTime(_currentAnimators[0]);
-            animationRunning = _currentAnimators[0].GetCurrentAnimatorStateInfo(0).normalizedTime < 1;
+        if (_currentAnimators != null)
+        {
+            sequenceTime = _animationStartTime-Time.time;
         }
+        Debug.Log("BackSequence sequenceTime " + sequenceTime);
 
-        if (!animationRunning || sequenceTime < 3f ){
+        if (!_animationRunning || sequenceTime < 3f)
+        {
             _currentSequence--;
-            Debug.Log("REAL BACK SEQUENCE");
-        }else{
-            Debug.Log("START SAME SEQUENCE");
         }
 
         StartSequence(_currentSequence);
@@ -137,13 +207,19 @@ public class ActionController : MonoBehaviour {
 
     private float GetAnimationTime(Animator myAnimator)
     {
-        AnimatorStateInfo animationState = myAnimator.GetCurrentAnimatorStateInfo(0);
+        float normalizedTime = GetNormalizedAnimationTime(myAnimator);
         AnimatorClipInfo[] myAnimatorClip = myAnimator.GetCurrentAnimatorClipInfo(0);
-
-        return myAnimatorClip[0].clip.length * animationState.normalizedTime;
+        return myAnimatorClip[0].clip.length * normalizedTime;
     }
 
-    public void ReturnToMainMenu(){
+    private float GetNormalizedAnimationTime(Animator myAnimator)
+    {
+        AnimatorStateInfo animationState = myAnimator.GetCurrentAnimatorStateInfo(0);
+        return animationState.normalizedTime;
+    }
+
+    public void ReturnToMainMenu()
+    {
         MainController.Instance.BackToInitScene();
     }
 }
