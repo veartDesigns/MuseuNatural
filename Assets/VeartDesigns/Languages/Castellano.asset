@@ -25,3 +25,5 @@ MonoBehaviour:
     Text: 
   - LanguageTag: 0
     Text: 
+  - LanguageTag: 5
+    Text: Escanea la imagen de la mesa.

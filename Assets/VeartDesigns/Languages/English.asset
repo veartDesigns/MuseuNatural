@@ -24,3 +24,5 @@ MonoBehaviour:
     Text: 
   - LanguageTag: 4
     Text: 
+  - LanguageTag: 5
+    Text: Scan the table image.
