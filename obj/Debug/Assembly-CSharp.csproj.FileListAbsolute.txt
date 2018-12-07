@@ -1,0 +1,2 @@
+/Users/VeartDesigns/Documents/work/MonLaboral/Freelance/MuseuNatural/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
+/Users/VeartDesigns/Documents/work/MonLaboral/Freelance/MuseuNatural/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache

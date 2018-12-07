@@ -17,7 +17,7 @@ MonoBehaviour:
       ActionObjects:
       - {fileID: 1128398246010038, guid: 13443586a952d4d629335c1e4e7f934d, type: 2}
       AnimationName: Sequence01
-  - LanguageTag: 0
+  - LanguageTag: 1
     Animations:
       ActionObjects:
       - {fileID: 1246392843013542, guid: 895573751b7f84f569ff258708f801ba, type: 2}

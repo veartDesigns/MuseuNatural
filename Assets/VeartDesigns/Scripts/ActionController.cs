@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ActionController : MonoBehaviour
@@ -14,6 +16,8 @@ public class ActionController : MonoBehaviour
     public Text SequencePage;
     public GameObject EndPanel;
     public UserActionController UserActionController;
+    public Button NextButton;
+    public EventSystem EventSystem;
     private int _currentSequence = -1;
     private SequenceInfo _currentSequenceInfo;
     private List<Animator> _currentAnimators;
@@ -21,10 +25,12 @@ public class ActionController : MonoBehaviour
     private float _animationStartTime;
     private bool _firstTrack = true;
     private bool _trackingActive;
+    private Coroutine _nextButtonCoroutine;
 
     private void Awake()
     {
         ShowEndPanel(false);
+
     }
 
     private void Start()
@@ -44,6 +50,10 @@ public class ActionController : MonoBehaviour
         if(_animationRunning)
         {
             UserActionController.RestartCounterTime();
+        }
+
+        if(EndPanel.active){
+            ScanMessage.SetActive(false);
         }
     }
 
@@ -73,7 +83,20 @@ public class ActionController : MonoBehaviour
 
     private void AnimateNextButton(bool state)
     {
-        Debug.Log("AnimateNextButton "+ state);
+        Debug.Log("AnimateNextButton " + state);
+        if (state) _nextButtonCoroutine = StartCoroutine(AnimateButton());
+    }
+
+    private IEnumerator AnimateButton()
+    {
+        while (true)
+        {
+            EventSystem.SetSelectedGameObject(NextButton.gameObject);
+            yield return new WaitForSeconds(0.4f);
+            EventSystem.SetSelectedGameObject(null);
+            yield return new WaitForSeconds(0.4f);
+        }
+        yield break;
     }
 
     private void ShowEndPanel(bool state)
@@ -129,7 +152,8 @@ public class ActionController : MonoBehaviour
 
     public void StartSequence(int sequence)
     {
-        Debug.Log("PREStartSequence" + sequence);
+        EventSystem.SetSelectedGameObject(null);
+
         if (sequence <= 0)
         {
             _currentSequence = 0;
@@ -137,7 +161,6 @@ public class ActionController : MonoBehaviour
         if (sequence >= AllSequenceInfos.SequenceInfos.Count)
         {
             _currentSequence = AllSequenceInfos.SequenceInfos.Count-1;
-            Debug.Log("StartSequence Blocked " + _currentSequence);
             return;
         }
 
@@ -201,6 +224,8 @@ public class ActionController : MonoBehaviour
 
     public void NextSequence()
     {
+        if(_nextButtonCoroutine != null) StopCoroutine(_nextButtonCoroutine);
+
         _currentSequence++;
         StartSequence(_currentSequence);
     }
