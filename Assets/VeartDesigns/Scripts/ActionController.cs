@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class ActionController : MonoBehaviour
 {
+    public Text debugQuality;
 
     public GameObject ARContainer;
     public AllSequenceInfos AllSequenceInfos;
@@ -39,6 +40,10 @@ public class ActionController : MonoBehaviour
 
         defaultTrackableEventHandler.TrackingLost += OnTrackingLost;
         defaultTrackableEventHandler.TrackingFound += OnTrackingFound;
+
+        int qualityLevel = QualitySettings.GetQualityLevel();
+        debugQuality.text = QualitySettings.names[qualityLevel];
+
     }
 
     private void OnDestroy()
