@@ -14,8 +14,7 @@ MonoBehaviour:
   Language: 2
   languageInfos:
   - LanguageTag: 0
-    Text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-      Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, '
+    Text: 
   - LanguageTag: 1
     Text: 
   - LanguageTag: 2
@@ -25,6 +24,12 @@ MonoBehaviour:
   - LanguageTag: 4
     Text: 
   - LanguageTag: 5
-    Text: Scan the table image.
+    Text: 
   - LanguageTag: 6
+    Text: 
+  - LanguageTag: 7
+    Text: 
+  - LanguageTag: 8
+    Text: Scan the table image.
+  - LanguageTag: 9
     Text: 'Explanation ended. Choose one option:'

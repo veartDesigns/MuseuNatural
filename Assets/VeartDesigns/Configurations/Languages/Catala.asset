@@ -14,18 +14,40 @@ MonoBehaviour:
   Language: 0
   languageInfos:
   - LanguageTag: 0
-    Text: "Lorem Ipsum \xE9s un text de farciment usat per la ind\xFAstria de la tipografia
-      i la impremta. Lorem Ipsum ha estat el text est\xE0ndard de la ind\xFAstria
-      des de l'any 1500,"
+    Text: "Aix\xF2 \xE9s una egagr\xF2pila. \xC9s una massa arrodonida que cont\xE9
+      les parts no digerides de les preses, regurgitada (expulsada per la boca) per
+      alguns ocells carn\xEDvors com \xF2libes, mussols entre d\u2019altres."
   - LanguageTag: 1
-    Text: 
+    Text: "Les egagr\xF2piles estan formades per p\xE8l, ossos, exoesquelets d\u2019insectes,
+      etc.  S\xF3n molt \xFAtils pels investigadors, ja que analitzant el seu contingut
+      ens permet saber quina fauna es troba a la zona. "
   - LanguageTag: 2
-    Text: 
+    Text: "Uns dels grups que podem recon\xE8ixer f\xE0cilment s\xF3n els micromam\xEDfers.
+      Observant els molars de les mand\xEDbules que trobem dins l\u2019egagr\xF2pila,
+      podem saber de quina esp\xE8cie es tracta. "
   - LanguageTag: 3
-    Text: 
+    Text: "En aquest cas, aquests molars s\xF3n de musaranya comuna (Crocidura russula).
+      Les musaranyes s\xF3n petits mam\xEDfers insect\xEDvors amb dents molt esmolades
+      que s\u2019alimenten principalment de petits invertebrats com insectes, aranyes,
+      etc. "
   - LanguageTag: 4
-    Text: 
+    Text: "Aquesta mand\xEDbula pertany a una rata cellarda (Eliomys quercinus). \xC9s
+      un mam\xEDfer rosegador de mida mitjana, que com el lir\xF3 gris tamb\xE9 pot
+      hibernar. \xC9s nocturn i viu a matollars i boscos. "
   - LanguageTag: 5
-    Text: Escaneja la imatge de la taula.
+    Text: "Aquesta mand\xEDbula pertany a un ratol\xED de bosc (Apodemus sylvaticus).
+      \xC9s un mam\xEDfer rosegador de mida petita i \xE9s actiu tot l\u2019any, no
+      fa hibernaci\xF3. \xC9s principalment nocturn i viu des de matollars i boscos
+      a zones de cultiu, etc. "
   - LanguageTag: 6
+    Text: "Els petits mam\xEDfers juguen un paper molt important als ecosistemes,
+      ja que s\xF3n l\u2019aliment principal de molts depredadors com guineus, genetes,
+      serps, falcons, mussols entre d\u2019altres i en aquest cas una \xF2liba."
+  - LanguageTag: 7
+    Text: "L\u2019\xF2liba (Tyto alba) \xE9s un rapinyaire nocturn i s\u2019alimenta
+      de petits mam\xEDfers, entre altres preses, i regurgita egagr\xF2piles amb les
+      parts dif\xEDcils de digerir. "
+  - LanguageTag: 8
+    Text: Escaneja la imatge de la taula.
+  - LanguageTag: 9
     Text: "Explicaci\xF3 finalitzada. Tria una opci\xF3:"

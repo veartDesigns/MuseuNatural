@@ -38,7 +38,7 @@ public class UserActionController : MonoBehaviour
         {
             _startTime = Time.time;
             Debug.Log("NO ACTION, BACK TO INIT MENU");
-            MainController.Instance.BackToInitScene();
+           // MainController.Instance.BackToInitScene();
         }
     }
 }

@@ -11,11 +11,16 @@ public class LanguageInfos : ScriptableObject {
         for (int i = 0; i < languageInfos.Count; i++){
 
             LanguageInfo languageInfo = languageInfos[i];
+
             if(languageInfo.LanguageTag == languageTag){
+                if(languageInfo.Text == ""){
+                    Debug.LogWarning("Language Tag " + languageTag + " not found in " + Language);
+                    return languageTag.ToString() + "_" + Language;
+                }
                 return languageInfo.Text;
             }
         }
         Debug.LogWarning("Language Tag " + languageTag + " not found in "+ Language);
-        return languageTag.ToString();
+        return languageTag.ToString()+ "_"+ Language;
     }
 }

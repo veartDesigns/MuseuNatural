@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ActionController : MonoBehaviour
 {
+    public float VRMarkerScale = 2.24f;
     public Text debugQuality;
 
     public GameObject ARContainer;
@@ -31,7 +33,6 @@ public class ActionController : MonoBehaviour
     private void Awake()
     {
         ShowEndPanel(false);
-
     }
 
     private void Start()
@@ -43,7 +44,6 @@ public class ActionController : MonoBehaviour
 
         int qualityLevel = QualitySettings.GetQualityLevel();
         debugQuality.text = QualitySettings.names[qualityLevel];
-
     }
 
     private void OnDestroy()
@@ -52,7 +52,7 @@ public class ActionController : MonoBehaviour
     }
     private void Update()
     {
-        if(_animationRunning)
+        if (_animationRunning)
         {
             UserActionController.RestartCounterTime();
         }
@@ -181,11 +181,11 @@ public class ActionController : MonoBehaviour
         ExplanationText.text = MainController.Instance.GetText(_currentSequenceInfo.LanguageTag);
         AnimationsInfo animations = _currentSequenceInfo.Animations;
         List<GameObject> objectsToAnimate = animations.ActionObjects;
+        List<GameObject> staticObjects = animations.StaticObjects;
 
         for (int i = 0; i < objectsToAnimate.Count; i++)
         {
             GameObject objectToAnimate = Instantiate(objectsToAnimate[i], ARContainer.transform);
-            objectToAnimate.name = "sequence_" + _currentSequence + "_" + i;
             string animationName = animations.AnimationName;
 
             if (i == 0)
@@ -195,11 +195,15 @@ public class ActionController : MonoBehaviour
             }
              Animator animation = objectToAnimate.transform.GetComponentInChildren<Animator>();
             _currentAnimators.Add(animation);
+            Debug.Log(objectToAnimate.name + " animationName " + animationName); 
             animation.Play(animationName);
 
             if(!_trackingActive) EnableDisableRenderer(objectToAnimate, _trackingActive);
         }
-
+        for (int i = 0; i < staticObjects.Count; i++)
+        {
+            GameObject objectToAnimate = Instantiate(staticObjects[i], ARContainer.transform);
+        }
         EnableDisableAnimators(_trackingActive);
     }
 
@@ -238,6 +242,8 @@ public class ActionController : MonoBehaviour
     public void BackSequence()
     {
         float sequenceTime = 999;
+
+        if (_nextButtonCoroutine != null) StopCoroutine(_nextButtonCoroutine);
 
         if (_currentAnimators != null)
         {

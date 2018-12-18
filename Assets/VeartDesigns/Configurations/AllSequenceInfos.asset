@@ -15,15 +15,62 @@ MonoBehaviour:
   - LanguageTag: 0
     Animations:
       ActionObjects:
-      - {fileID: 1128398246010038, guid: 13443586a952d4d629335c1e4e7f934d, type: 2}
+      - {fileID: 1740407501732130, guid: d35118b8372ed45f2b6e1e72d65e3157, type: 2}
+      - {fileID: 1290089727153052, guid: 4c40583f96d3a48a4942af70340184c9, type: 2}
+      StaticObjects:
+      - {fileID: 1784861996006704, guid: d32b3a60010b14de0a237285711d13bc, type: 2}
       AnimationName: Sequence01
   - LanguageTag: 1
     Animations:
       ActionObjects:
-      - {fileID: 1246392843013542, guid: 895573751b7f84f569ff258708f801ba, type: 2}
+      - {fileID: 1740407501732130, guid: d35118b8372ed45f2b6e1e72d65e3157, type: 2}
+      - {fileID: 1290089727153052, guid: 4c40583f96d3a48a4942af70340184c9, type: 2}
+      StaticObjects:
+      - {fileID: 1784861996006704, guid: d32b3a60010b14de0a237285711d13bc, type: 2}
       AnimationName: Sequence02
   - LanguageTag: 2
     Animations:
       ActionObjects:
-      - {fileID: 1363608455056908, guid: cd544015e6de747808526cfab01a1f88, type: 2}
+      - {fileID: 1740407501732130, guid: d35118b8372ed45f2b6e1e72d65e3157, type: 2}
+      - {fileID: 1944882677725870, guid: 9984500c3ac1241078d723bcc4661397, type: 2}
+      StaticObjects:
+      - {fileID: 1784861996006704, guid: d32b3a60010b14de0a237285711d13bc, type: 2}
       AnimationName: Sequence03
+  - LanguageTag: 3
+    Animations:
+      ActionObjects:
+      - {fileID: 1944882677725870, guid: 9984500c3ac1241078d723bcc4661397, type: 2}
+      StaticObjects:
+      - {fileID: 1784861996006704, guid: d32b3a60010b14de0a237285711d13bc, type: 2}
+      AnimationName: Sequence04
+  - LanguageTag: 4
+    Animations:
+      ActionObjects:
+      - {fileID: 1690758159528932, guid: b7094b491c39948919134b340652ab6a, type: 2}
+      - {fileID: 1873992891439042, guid: c31e3ee3dd3a1429bab3746057d0f91a, type: 2}
+      StaticObjects:
+      - {fileID: 1784861996006704, guid: d32b3a60010b14de0a237285711d13bc, type: 2}
+      AnimationName: Sequence05
+  - LanguageTag: 5
+    Animations:
+      ActionObjects:
+      - {fileID: 1142012803607708, guid: 52a8e4095fc4640a697b1760b2ad16a4, type: 2}
+      - {fileID: 1784861996006704, guid: d32b3a60010b14de0a237285711d13bc, type: 2}
+      - {fileID: 1873992891439042, guid: c31e3ee3dd3a1429bab3746057d0f91a, type: 2}
+      - {fileID: 1728629975551750, guid: e4c25fc78709d4801afd3d6c90b4aadf, type: 2}
+      StaticObjects: []
+      AnimationName: Sequence06
+  - LanguageTag: 6
+    Animations:
+      ActionObjects:
+      - {fileID: 0}
+      - {fileID: 0}
+      StaticObjects: []
+      AnimationName: Sequence07
+  - LanguageTag: 7
+    Animations:
+      ActionObjects:
+      - {fileID: 0}
+      - {fileID: 0}
+      StaticObjects: []
+      AnimationName: Sequence08
