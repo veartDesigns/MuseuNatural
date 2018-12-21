@@ -16,7 +16,7 @@ ModelImporter:
     3300002: musaranya_molar
     4300000: musaranya_mandibula
     4300002: musaranya_molar
-    7400000: Sequence01
+    7400000: Idle
     7400002: Sequence02
     7400004: Sequence03
     9500000: //RootNode
@@ -49,7 +49,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Sequence01
+      name: Idle
       takeName: Take 001
       firstFrame: 1
       lastFrame: 40
@@ -59,7 +59,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -138,6 +138,7 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -162,6 +163,9 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

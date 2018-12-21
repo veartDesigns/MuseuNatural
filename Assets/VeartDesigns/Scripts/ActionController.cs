@@ -52,24 +52,74 @@ public class ActionController : MonoBehaviour
     }
     private void Update()
     {
+        ClickOverObject();
+
         if (_animationRunning)
         {
             UserActionController.RestartCounterTime();
         }
 
-        if(EndPanel.active){
+        if (EndPanel.active)
+        {
             ScanMessage.SetActive(false);
         }
     }
 
+    private void ClickOverObject()
+    {
+        Vector2 inputPosition = Vector2.zero;
+        bool click = false;
+        if (Input.GetMouseButtonDown(0))
+        {
+            click = true;
+            inputPosition = Input.mousePosition;
+        }
+        else if (Input.touchCount > 0 && Input.GetTouch(0).phase.Equals(TouchPhase.Began))
+        {
+            click = true;
+            inputPosition = Input.touches[0].position;
+        }
+
+        if (click)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(inputPosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 1000.0f))
+            {
+                ObjectClicked(hit.transform.gameObject);
+            }
+        }
+    }
+
+    private void ObjectClicked(GameObject objectSelected)
+    {
+        int containerObjects = ARContainer.transform.childCount;
+
+        for (int i = 0; i < _currentAnimators.Count; i++)
+        {
+            Animator animator = _currentAnimators[i];
+            GameObject ARObject = animator.gameObject;
+
+            if(objectSelected.Equals(ARObject)){
+                animator.Play("Protagonist");
+                Debug.Log("ANIMATE THAT " + ARObject.name);
+            }else{
+                Debug.Log("SECOND PLANE  " + ARObject.name);
+                animator.Play("NotProtagonist");
+            }
+            ARObject.GetComponent<Collider>().enabled = false;
+        }
+
+    }
+
     public void AnimationStart(){
-        Debug.Log("ANIMATION STARTED");
+        //Debug.Log("ANIMATION STARTED");
         _animationRunning = true;
         _animationStartTime = Time.time;
     }
     public void AnimationEnd()
     {
-        Debug.Log("ANIMATION ENDED");
+        //Debug.Log("ANIMATION ENDED");
         OnAnimationFinished();
         _animationRunning = false;
     }
@@ -77,12 +127,12 @@ public class ActionController : MonoBehaviour
     {
         if((_currentSequence) >= AllSequenceInfos.SequenceInfos.Count-1)
         {
-            ShowEndPanel(true);
+            //ShowEndPanel(true);
         }
 
         if(_currentSequence < AllSequenceInfos.SequenceInfos.Count - 1 ){
 
-            AnimateNextButton(true);
+            //AnimateNextButton(true);
         }
     }
 
@@ -91,7 +141,10 @@ public class ActionController : MonoBehaviour
         Debug.Log("AnimateNextButton " + state);
         if (state) _nextButtonCoroutine = StartCoroutine(AnimateButton());
     }
-
+    private void ShowEndPanel(bool state)
+    {
+        EndPanel.SetActive(state);
+    }
     private IEnumerator AnimateButton()
     {
         while (true)
@@ -104,23 +157,12 @@ public class ActionController : MonoBehaviour
         yield break;
     }
 
-    private void ShowEndPanel(bool state)
-    {
-        EndPanel.SetActive(state);
-
-    }
     public void CloseEndPanel()
     {
         ShowEndPanel(false);
         Debug.Log("Close Panel");
     }
-    public void RepeatAnimation(){
-
-        EndPanel.SetActive(false);
-        _currentSequence = -1;
-        NextSequence();
-    }
-
+   
     private void OnTrackingLost()
     {
         _trackingActive = false;
@@ -137,7 +179,7 @@ public class ActionController : MonoBehaviour
         {
             _firstTrack = false;
             _currentSequence = -1;
-            NextSequence();
+            StartSequence(_currentSequence);
         }
 
         EnableDisableAnimators(true);
@@ -157,7 +199,7 @@ public class ActionController : MonoBehaviour
 
     public void StartSequence(int sequence)
     {
-        EventSystem.SetSelectedGameObject(null);
+        //EventSystem.SetSelectedGameObject(null);
 
         if (sequence <= 0)
         {
@@ -171,9 +213,9 @@ public class ActionController : MonoBehaviour
 
         Debug.Log("StartSequence " + _currentSequence);
 
-        AnimateNextButton(false);
+        //AnimateNextButton(false);
 
-        SequencePage.text = (_currentSequence+1) + "/" + AllSequenceInfos.SequenceInfos.Count;
+        //SequencePage.text = (_currentSequence+1) + "/" + AllSequenceInfos.SequenceInfos.Count;
 
         CleanARContainerObjects();
 
@@ -186,7 +228,7 @@ public class ActionController : MonoBehaviour
         for (int i = 0; i < objectsToAnimate.Count; i++)
         {
             GameObject objectToAnimate = Instantiate(objectsToAnimate[i], ARContainer.transform);
-            string animationName = animations.AnimationName;
+            string animationName = "Idle"; //animations.AnimationName;
 
             if (i == 0)
             {
@@ -229,38 +271,6 @@ public class ActionController : MonoBehaviour
             Destroy(ARObject);
         }
         _currentAnimators.Clear();
-    }
-
-    public void NextSequence()
-    {
-        if(_nextButtonCoroutine != null) StopCoroutine(_nextButtonCoroutine);
-
-        _currentSequence++;
-        StartSequence(_currentSequence);
-    }
-
-    public void BackSequence()
-    {
-        float sequenceTime = 999;
-
-        if (_nextButtonCoroutine != null) StopCoroutine(_nextButtonCoroutine);
-
-        if (_currentAnimators != null)
-        {
-            sequenceTime = Time.time - _animationStartTime;
-        }
-        Debug.Log("BackSequence  " + _animationRunning + "  "+ sequenceTime + " "+ _currentSequence);
-
-        if (!_animationRunning || sequenceTime < 3f)
-        {
-            Debug.Log("FORCE REAL BACK");
-            _currentSequence--;
-
-        }else{
-            Debug.Log("PLAY SAME");
-        }
-
-        StartSequence(_currentSequence);
     }
 
     private float GetAnimationTime(Animator myAnimator)

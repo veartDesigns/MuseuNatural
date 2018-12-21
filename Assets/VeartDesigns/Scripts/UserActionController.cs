@@ -37,7 +37,7 @@ public class UserActionController : MonoBehaviour
         if (timePassed >= _secondsToBackToInit)
         {
             _startTime = Time.time;
-            Debug.Log("NO ACTION, BACK TO INIT MENU");
+            //Debug.Log("NO ACTION, BACK TO INIT MENU");
            // MainController.Instance.BackToInitScene();
         }
     }

@@ -15,6 +15,7 @@ public class MainController : MonoBehaviour {
     {
         _instance = this;
         LoadScene(AppScenes.InitialScene);
+        SetLanguage(0);
     }
 
     public static MainController Instance
