@@ -23,7 +23,9 @@ public class AnimationConrollerManager : StateMachineBehaviour {
             _ended = true;
         }
     }
-
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+        _ended = false;
+    }
     private float GetNormalizedAnimationTime(Animator myAnimator)
     {
         AnimatorStateInfo animationState = myAnimator.GetCurrentAnimatorStateInfo(0);

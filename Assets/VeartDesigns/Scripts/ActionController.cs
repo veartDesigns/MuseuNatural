@@ -29,6 +29,7 @@ public class ActionController : MonoBehaviour
     private bool _firstTrack = true;
     private bool _trackingActive;
     private Coroutine _nextButtonCoroutine;
+    private ObjectInfo _objectInfo;
 
     private void Awake()
     {
@@ -94,73 +95,84 @@ public class ActionController : MonoBehaviour
     private void ObjectClicked(GameObject objectSelected)
     {
         int containerObjects = ARContainer.transform.childCount;
+        ObjectInfo objectInfo = objectSelected.GetComponent<ObjectInfo>();
+
+        if(objectInfo.ObjectType == ObjectType.Lechuza ){
+
+            Debug.Log("ANIMATE THAT " + objectSelected.name);
+            objectSelected.GetComponent<Animator>().Play("Protagonist");
+            return;
+        }
 
         for (int i = 0; i < _currentAnimators.Count; i++)
         {
             Animator animator = _currentAnimators[i];
-            GameObject ARObject = animator.gameObject;
+            GameObject goAr = animator.gameObject;
 
-            if(objectSelected.Equals(ARObject)){
+            if (objectSelected.Equals(goAr)){
                 animator.Play("Protagonist");
-                Debug.Log("ANIMATE THAT " + ARObject.name);
+                Debug.Log("ANIMATE THAT " + goAr.name);
             }else{
-                Debug.Log("SECOND PLANE  " + ARObject.name);
-                animator.Play("NotProtagonist");
+
+                string animName = "NotProtagonist";
+                if(goAr.name == "Lechuza"){
+                    animName += "_" + objectInfo.ObjectType;
+                }
+                Debug.Log("SECOND PLANE  " + goAr.name + "  " + animName);
+
+                animator.Play(animName);
             }
-            ARObject.GetComponent<Collider>().enabled = false;
         }
 
     }
 
-    public void AnimationStart(){
+    public void AnimateEgagropila()
+    {
+        for (int i = 0; i < _currentAnimators.Count; i++)
+        {
+            Animator animator = _currentAnimators[i];
+            GameObject go = animator.gameObject;
+            ObjectInfo objectInfo = go.GetComponent<ObjectInfo>();
+
+            if(objectInfo.ObjectType == ObjectType.Egagropila){
+
+                animator.Play("Egagropila");
+            }
+        }
+    }
+    public void AnimationStart(ObjectInfo objectInfo){
+
         //Debug.Log("ANIMATION STARTED");
         _animationRunning = true;
         _animationStartTime = Time.time;
     }
-    public void AnimationEnd()
+    public void AnimationEnd(ObjectInfo objectInfo)
     {
-        //Debug.Log("ANIMATION ENDED");
-        OnAnimationFinished();
         _animationRunning = false;
-    }
-    private void OnAnimationFinished()
-    {
-        if((_currentSequence) >= AllSequenceInfos.SequenceInfos.Count-1)
-        {
-            //ShowEndPanel(true);
-        }
 
-        if(_currentSequence < AllSequenceInfos.SequenceInfos.Count - 1 ){
-
-            //AnimateNextButton(true);
+        if (objectInfo == null){
+            Debug.Log("ANIMATION ENDED");
+            return;
+        }else{
+            OnAnimationFinished(objectInfo);
         }
     }
-
-    private void AnimateNextButton(bool state)
+    private void OnAnimationFinished(ObjectInfo objectInfo)
     {
-        Debug.Log("AnimateNextButton " + state);
-        if (state) _nextButtonCoroutine = StartCoroutine(AnimateButton());
+        Debug.Log("ANIMATION ENDED " + objectInfo.ObjectType);
+
+        switch (objectInfo.ObjectType){
+
+            case ObjectType.Lechuza:
+                break;
+            case ObjectType.Mandibula:
+                break;
+        }
     }
+
     private void ShowEndPanel(bool state)
     {
         EndPanel.SetActive(state);
-    }
-    private IEnumerator AnimateButton()
-    {
-        while (true)
-        {
-            EventSystem.SetSelectedGameObject(NextButton.gameObject);
-            yield return new WaitForSeconds(0.4f);
-            EventSystem.SetSelectedGameObject(null);
-            yield return new WaitForSeconds(0.4f);
-        }
-        yield break;
-    }
-
-    public void CloseEndPanel()
-    {
-        ShowEndPanel(false);
-        Debug.Log("Close Panel");
     }
    
     private void OnTrackingLost()
@@ -213,8 +225,6 @@ public class ActionController : MonoBehaviour
 
         Debug.Log("StartSequence " + _currentSequence);
 
-        //AnimateNextButton(false);
-
         //SequencePage.text = (_currentSequence+1) + "/" + AllSequenceInfos.SequenceInfos.Count;
 
         CleanARContainerObjects();
@@ -227,15 +237,16 @@ public class ActionController : MonoBehaviour
 
         for (int i = 0; i < objectsToAnimate.Count; i++)
         {
-            GameObject objectToAnimate = Instantiate(objectsToAnimate[i], ARContainer.transform);
+            GameObject prefab = objectsToAnimate[i];
+            GameObject objectToAnimate = Instantiate(prefab, ARContainer.transform);
+            objectToAnimate.name = prefab.name;
             string animationName = "Idle"; //animations.AnimationName;
+            ObjectInfo objectInfo = gameObject.GetComponent<ObjectInfo>();
 
-            if (i == 0)
-            {
-                AnimatorAnnouncer animatorAnnouncer = objectToAnimate.AddComponent<AnimatorAnnouncer>();
-                animatorAnnouncer.SetActionController(this);
-            }
-             Animator animation = objectToAnimate.transform.GetComponentInChildren<Animator>();
+            AnimatorAnnouncer animatorAnnouncer = objectToAnimate.AddComponent<AnimatorAnnouncer>();
+            animatorAnnouncer.SetActionController(this, objectInfo);
+           
+            Animator animation = objectToAnimate.transform.GetComponentInChildren<Animator>();
             _currentAnimators.Add(animation);
             Debug.Log(objectToAnimate.name + " animationName " + animationName); 
             animation.Play(animationName);
@@ -271,19 +282,6 @@ public class ActionController : MonoBehaviour
             Destroy(ARObject);
         }
         _currentAnimators.Clear();
-    }
-
-    private float GetAnimationTime(Animator myAnimator)
-    {
-        float normalizedTime = GetNormalizedAnimationTime(myAnimator);
-        AnimatorClipInfo[] myAnimatorClip = myAnimator.GetCurrentAnimatorClipInfo(0);
-        return myAnimatorClip[0].clip.length * normalizedTime;
-    }
-
-    private float GetNormalizedAnimationTime(Animator myAnimator)
-    {
-        AnimatorStateInfo animationState = myAnimator.GetCurrentAnimatorStateInfo(0);
-        return animationState.normalizedTime;
     }
 
     public void ReturnToMainMenu()

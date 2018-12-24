@@ -13,5 +13,4 @@ public class AnimationsInfo
 {
     public List<GameObject> ActionObjects;
     public List<GameObject> StaticObjects;
-    public string AnimationName;
 }

@@ -16,8 +16,7 @@ MonoBehaviour:
   - LanguageTag: 0
     Animations:
       ActionObjects:
-      - {fileID: 1740407501732130, guid: d35118b8372ed45f2b6e1e72d65e3157, type: 3}
-      - {fileID: 1290089727153052, guid: 4c40583f96d3a48a4942af70340184c9, type: 3}
-      - {fileID: 1784861996006704, guid: d32b3a60010b14de0a237285711d13bc, type: 3}
+      - {fileID: 8650014646016042000, guid: c7d330e120fd0430fa56f316868733ac, type: 3}
+      - {fileID: 7744497583516588776, guid: 04fde8291f7f84505a57b8c100e948f5, type: 3}
+      - {fileID: 555285453, guid: 9f87dd2c50a9741b5b23762aa729cff1, type: 3}
       StaticObjects: []
-      AnimationName: Sequence01

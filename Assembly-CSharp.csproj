@@ -69,7 +69,9 @@
     <Compile Include="Assets\VeartDesigns\Scripts\CameraFocusController.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\ColliderClickDetector.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\CreditsController.cs" />
+    <Compile Include="Assets\VeartDesigns\Scripts\EgagropilaStateManager.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\FpsDebug.cs" />
+    <Compile Include="Assets\VeartDesigns\Scripts\IdleStateManager.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\InitialController.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Initializer.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Language\CatalanInfos.cs" />
@@ -81,7 +83,9 @@
     <Compile Include="Assets\VeartDesigns\Scripts\Language\LanguageTags.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Language\LocalizeString.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Language\SpanishInfos.cs" />
+    <Compile Include="Assets\VeartDesigns\Scripts\LechuzaVomito.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\MainController.cs" />
+    <Compile Include="Assets\VeartDesigns\Scripts\ObjectInfo.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Sequences\AllSequenceInfos.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Sequences\SequenceInfo.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\UserActionController.cs" />
