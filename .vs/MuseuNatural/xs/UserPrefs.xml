@@ -2,14 +2,16 @@
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/VeartDesigns/Scripts/ActionController.cs">
     <Files>
-      <File FileName="Assets/VeartDesigns/Scripts/MainController.cs" Line="12" Column="16" />
-      <File FileName="Assets/VeartDesigns/Scripts/ActionController.cs" Line="268" Column="10" />
-      <File FileName="Assets/VeartDesigns/Scripts/AnimatorAnnouncer.cs" Line="18" Column="30" />
-      <File FileName="Assets/VeartDesigns/Scripts/IdleStateManager.cs" Line="11" Column="6" />
-      <File FileName="Assets/VeartDesigns/Scripts/EgagropilaStateManager.cs" Line="13" Column="64" />
-      <File FileName="Assets/VeartDesigns/Scripts/LechuzaVomito.cs" Line="11" Column="53" />
-      <File FileName="Assets/VeartDesigns/Scripts/AnimationConrollerManager.cs" Line="7" Column="6" />
-      <File FileName="Assets/VeartDesigns/Scripts/ObjectInfo.cs" Line="16" Column="10" />
+      <File FileName="Assets/VeartDesigns/Scripts/MainController.cs" Line="37" Column="34" />
+      <File FileName="Assets/VeartDesigns/Scripts/ActionController.cs" Line="1" Column="18" />
+      <File FileName="Assets/VeartDesigns/Scripts/AnimatorAnnouncer.cs" Line="40" Column="1" />
+      <File FileName="Assets/VeartDesigns/Scripts/LechuzaVomito.cs" Line="11" Column="27" />
+      <File FileName="Assets/VeartDesigns/Scripts/IdleStateManager.cs" Line="17" Column="2" />
+      <File FileName="Assets/StoryEndsAnnouncer.cs" Line="11" Column="48" />
+      <File FileName="Assets/VeartDesigns/Scripts/AnimationConrollerManager.cs" Line="5" Column="25" />
+      <File FileName="Assets/VeartDesigns/Scripts/ForceScaleToZeroInIdleManager.cs" Line="8" Column="72" />
+      <File FileName="Assets/VeartDesigns/Scripts/LastAnimationStarter.cs" Line="1" Column="1" />
+      <File FileName="Assets/Vuforia/Scripts/DefaultTrackableEventHandler.cs" Line="118" Column="35" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

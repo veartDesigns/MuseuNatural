@@ -9,7 +9,9 @@ public class ObjectInfo : MonoBehaviour
 public enum ObjectType
 {
     Lechuza,
-    Mandibula,
+    MandibulaRaton,
+    MandibulaLiron,
+    MandibulaMusaraña,
     LironCareto,
     Egagropila,
     Musaraña,

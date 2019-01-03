@@ -21,6 +21,7 @@ ModelImporter:
     4300000: e_Egagropila_L1
     7400000: Egagropila
     9500000: //RootNode
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -40,7 +41,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    importConstraints: 0
+    importConstraints: 1
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -52,8 +53,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Egagropila
       takeName: Take 001
-      firstFrame: 881
-      lastFrame: 1239
+      firstFrame: 732
+      lastFrame: 1300
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

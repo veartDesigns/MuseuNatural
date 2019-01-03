@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Kino\Obscurance\Obscurance.cs" />
     <Compile Include="Assets\Kino\Obscurance\Script\PropertyObserver.cs" />
+    <Compile Include="Assets\StoryEndsAnnouncer.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\ActionController.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\AnimationConrollerManager.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\AnimatorAnnouncer.cs" />
@@ -69,7 +70,7 @@
     <Compile Include="Assets\VeartDesigns\Scripts\CameraFocusController.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\ColliderClickDetector.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\CreditsController.cs" />
-    <Compile Include="Assets\VeartDesigns\Scripts\EgagropilaStateManager.cs" />
+    <Compile Include="Assets\VeartDesigns\Scripts\ForceScaleToZeroInIdleManager.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\FpsDebug.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\IdleStateManager.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\InitialController.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Assets\VeartDesigns\Scripts\Language\LanguageTags.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Language\LocalizeString.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Language\SpanishInfos.cs" />
+    <Compile Include="Assets\VeartDesigns\Scripts\LastAnimationStarter.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\LechuzaVomito.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\MainController.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\ObjectInfo.cs" />

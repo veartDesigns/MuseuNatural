@@ -97,8 +97,8 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             component.enabled = true;
 
         // Enable colliders:
-        foreach (var component in colliderComponents)
-            component.enabled = true;
+        /*foreach (var component in colliderComponents)
+            component.enabled = true;*/
 
         // Enable canvas':
         foreach (var component in canvasComponents)
@@ -119,8 +119,8 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
             component.enabled = false;
 
         // Disable colliders:
-        foreach (var component in colliderComponents)
-            component.enabled = false;
+       /* foreach (var component in colliderComponents)
+            component.enabled = false;*/
 
         // Disable canvas':
         foreach (var component in canvasComponents)

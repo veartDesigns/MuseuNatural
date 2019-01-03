@@ -8,7 +8,6 @@ public class AnimatorAnnouncer : MonoBehaviour {
     private ObjectInfo _objectInfo;
 
     public void SetActionController(ActionController actionController,ObjectInfo objectInfo){
-
         _actionController = actionController;
         _objectInfo = objectInfo;
     }
@@ -28,4 +27,13 @@ public class AnimatorAnnouncer : MonoBehaviour {
     {
         _actionController.AnimateEgagropila();
     }
+    public void AnnounceLastAnimation(){
+
+        _actionController.AnnounceLastAnimation();
+    }
+    public void AnnounceEndOfStory()
+    {
+        _actionController.AnnounceEndOfStory();
+    }
+
 }

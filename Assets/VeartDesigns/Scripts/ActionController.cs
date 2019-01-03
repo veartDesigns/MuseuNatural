@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -29,8 +26,7 @@ public class ActionController : MonoBehaviour
     private bool _firstTrack = true;
     private bool _trackingActive;
     private Coroutine _nextButtonCoroutine;
-    private ObjectInfo _objectInfo;
-
+    private ObjectInfo _objectClickedInfo;
     private void Awake()
     {
         ShowEndPanel(false);
@@ -95,32 +91,45 @@ public class ActionController : MonoBehaviour
     private void ObjectClicked(GameObject objectSelected)
     {
         int containerObjects = ARContainer.transform.childCount;
-        ObjectInfo objectInfo = objectSelected.GetComponent<ObjectInfo>();
+        ObjectInfo objectClickedInfo = objectSelected.GetComponent<ObjectInfo>();
 
-        if(objectInfo.ObjectType == ObjectType.Lechuza ){
-
+        if (objectClickedInfo.ObjectType == ObjectType.Lechuza)
+        {
             Debug.Log("ANIMATE THAT " + objectSelected.name);
             objectSelected.GetComponent<Animator>().Play("Protagonist");
             return;
         }
+        _objectClickedInfo = objectClickedInfo;
 
         for (int i = 0; i < _currentAnimators.Count; i++)
         {
             Animator animator = _currentAnimators[i];
-            GameObject goAr = animator.gameObject;
+            ObjectInfo goInfo = animator.gameObject.GetComponent<ObjectInfo>();
 
-            if (objectSelected.Equals(goAr)){
+            if (goInfo.ObjectType == _objectClickedInfo.ObjectType)
+            {
                 animator.Play("Protagonist");
-                Debug.Log("ANIMATE THAT " + goAr.name);
-            }else{
+                Debug.Log("ANIMATE THAT " + goInfo.ObjectType);
+            }
+            else
+            {
 
                 string animName = "NotProtagonist";
-                if(goAr.name == "Lechuza"){
-                    animName += "_" + objectInfo.ObjectType;
-                }
-                Debug.Log("SECOND PLANE  " + goAr.name + "  " + animName);
 
-                animator.Play(animName);
+                if (goInfo.ObjectType == ObjectType.Lechuza)
+                {
+                    animName += "_" + _objectClickedInfo.ObjectType;
+                    animator.Play(animName);
+                }
+                else if(goInfo.ObjectType != ObjectType.Egagropila && 
+                         goInfo.ObjectType != ObjectType.MandibulaLiron &&
+                         goInfo.ObjectType != ObjectType.MandibulaRaton &&
+                         goInfo.ObjectType != ObjectType.MandibulaMusaraña){
+
+                    Debug.Log("SECOND PLANE  " + goInfo.ObjectType + "  " + animName);
+                    animator.Play(animName);
+                }
+              
             }
         }
 
@@ -134,13 +143,47 @@ public class ActionController : MonoBehaviour
             GameObject go = animator.gameObject;
             ObjectInfo objectInfo = go.GetComponent<ObjectInfo>();
 
-            if(objectInfo.ObjectType == ObjectType.Egagropila){
+            if (objectInfo.ObjectType == ObjectType.Egagropila)
+            {
 
                 animator.Play("Egagropila");
             }
+            if(objectInfo.ObjectType == ObjectType.MandibulaLiron ||
+               objectInfo.ObjectType == ObjectType.MandibulaRaton ||
+               objectInfo.ObjectType == ObjectType.MandibulaMusaraña)
+            {
+                Debug.Log("ANIMATE MANDIBULA" + _objectClickedInfo.ObjectType);
+                animator.Play("Mandibula"+ _objectClickedInfo.ObjectType);
+            }
         }
     }
-    public void AnimationStart(ObjectInfo objectInfo){
+    public void AnnounceLastAnimation(){
+
+        for (int i = 0; i < _currentAnimators.Count; i++)
+        {
+            Animator animator = _currentAnimators[i];
+            GameObject go = animator.gameObject;
+            ObjectInfo objectInfo = go.GetComponent<ObjectInfo>();
+
+            if (_objectClickedInfo.ObjectType == objectInfo.ObjectType)
+            {
+                Debug.Log("ANIMATE LAST " + _objectClickedInfo.ObjectType);
+                animator.Play("NotProtagonist");
+            }
+        }
+    }
+
+    public void AnnounceEndOfStory(){
+        Debug.Log("THHE EEEEND ");
+        for (int i = 0; i < _currentAnimators.Count; i++)
+        {
+            Animator animator = _currentAnimators[i];
+            animator.Play("Idle");
+        }
+    }
+
+    public void AnimationStart(ObjectInfo objectInfo)
+    {
 
         //Debug.Log("ANIMATION STARTED");
         _animationRunning = true;
@@ -150,10 +193,13 @@ public class ActionController : MonoBehaviour
     {
         _animationRunning = false;
 
-        if (objectInfo == null){
+        if (objectInfo == null)
+        {
             Debug.Log("ANIMATION ENDED");
             return;
-        }else{
+        }
+        else
+        {
             OnAnimationFinished(objectInfo);
         }
     }
@@ -161,11 +207,17 @@ public class ActionController : MonoBehaviour
     {
         Debug.Log("ANIMATION ENDED " + objectInfo.ObjectType);
 
-        switch (objectInfo.ObjectType){
+        switch (objectInfo.ObjectType)
+        {
 
             case ObjectType.Lechuza:
+
                 break;
-            case ObjectType.Mandibula:
+
+            case ObjectType.MandibulaRaton:
+            case ObjectType.MandibulaLiron:
+            case ObjectType.MandibulaMusaraña:
+
                 break;
         }
     }
@@ -174,7 +226,7 @@ public class ActionController : MonoBehaviour
     {
         EndPanel.SetActive(state);
     }
-   
+
     private void OnTrackingLost()
     {
         _trackingActive = false;
@@ -219,7 +271,7 @@ public class ActionController : MonoBehaviour
         }
         if (sequence >= AllSequenceInfos.SequenceInfos.Count)
         {
-            _currentSequence = AllSequenceInfos.SequenceInfos.Count-1;
+            _currentSequence = AllSequenceInfos.SequenceInfos.Count - 1;
             return;
         }
 
@@ -241,34 +293,20 @@ public class ActionController : MonoBehaviour
             GameObject objectToAnimate = Instantiate(prefab, ARContainer.transform);
             objectToAnimate.name = prefab.name;
             string animationName = "Idle"; //animations.AnimationName;
-            ObjectInfo objectInfo = gameObject.GetComponent<ObjectInfo>();
-
+            ObjectInfo objectInfo = objectToAnimate.GetComponent<ObjectInfo>();
             AnimatorAnnouncer animatorAnnouncer = objectToAnimate.AddComponent<AnimatorAnnouncer>();
             animatorAnnouncer.SetActionController(this, objectInfo);
-           
+
             Animator animation = objectToAnimate.transform.GetComponentInChildren<Animator>();
             _currentAnimators.Add(animation);
-            Debug.Log(objectToAnimate.name + " animationName " + animationName); 
+            Debug.Log(objectToAnimate.name + " animationName " + animationName);
             animation.Play(animationName);
-
-            if(!_trackingActive) EnableDisableRenderer(objectToAnimate, _trackingActive);
         }
         for (int i = 0; i < staticObjects.Count; i++)
         {
             GameObject objectToAnimate = Instantiate(staticObjects[i], ARContainer.transform);
         }
         EnableDisableAnimators(_trackingActive);
-    }
-
-    private void EnableDisableRenderer(GameObject objectToAnimate,bool enable)
-    {
-        Renderer[] renderers = objectToAnimate.transform.GetComponentsInChildren<Renderer>();
-
-        for (int i = 0; i < renderers.Length; i++)
-        {
-            Renderer renderer = renderers[i];
-            renderer.enabled = enable;
-        }
     }
 
     private void CleanARContainerObjects()
