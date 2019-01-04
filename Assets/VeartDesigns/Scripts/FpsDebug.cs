@@ -26,6 +26,6 @@
              frameCount = 0;
              dt -= 1.0F / updateRateSeconds;
          }
-         txtFps.text =  System.Math.Round(fps, 1) + " FPS";
+        txtFps.text = Screen.width + "x" + Screen.height + " \n " + System.Math.Round(fps, 1) + " FPS";
      }
  }

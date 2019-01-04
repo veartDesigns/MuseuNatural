@@ -12,7 +12,6 @@ public class ActionController : MonoBehaviour
     public AllSequenceInfos AllSequenceInfos;
     public DefaultTrackableEventHandler defaultTrackableEventHandler;
     public GameObject ScanMessage;
-    public Text ExplanationText;
     public Text SequencePage;
     public GameObject EndPanel;
     public UserActionController UserActionController;
@@ -282,7 +281,7 @@ public class ActionController : MonoBehaviour
         CleanARContainerObjects();
 
         _currentSequenceInfo = AllSequenceInfos.GetSequenceInfo(_currentSequence);
-        ExplanationText.text = MainController.Instance.GetText(_currentSequenceInfo.LanguageTag);
+        //ExplanationText.text = MainController.Instance.GetText(_currentSequenceInfo.LanguageTag);
         AnimationsInfo animations = _currentSequenceInfo.Animations;
         List<GameObject> objectsToAnimate = animations.ActionObjects;
         List<GameObject> staticObjects = animations.StaticObjects;
