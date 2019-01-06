@@ -410,7 +410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8813366446184186923}
   - component: {fileID: 740566052245241896}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: a_ojo_R_lechuza_msh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 9003547118235812368}
   - component: {fileID: 479063045601712162}
   - component: {fileID: 2756104228822569060}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: a_ojoParpado_L_lechuza_msh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

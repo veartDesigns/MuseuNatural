@@ -29,6 +29,7 @@ public class ActionController : MonoBehaviour
     private void Awake()
     {
         ShowEndPanel(false);
+        ARContainer.transform.localScale *= AllSequenceInfos.ActionContainerSize;
     }
 
     private void Start()
