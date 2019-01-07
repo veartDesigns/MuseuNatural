@@ -1546,6 +1546,65 @@ Transform:
   m_Father: {fileID: 247613456484977662}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &301840685000009168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 301840685000009171}
+  - component: {fileID: 301840685000009173}
+  - component: {fileID: 301840685000009170}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &301840685000009171
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301840685000009168}
+  m_LocalRotation: {x: 0.65061116, y: -0.061414782, z: 0.05291836, w: 0.7550715}
+  m_LocalPosition: {x: 0.1257, y: 0.0202, z: 0.1516}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7454967996893097853}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 81.5, y: -9.3, z: 0}
+--- !u!114 &301840685000009173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301840685000009168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb23211f6755845e2abb488eeae105dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectType: 7
+--- !u!136 &301840685000009170
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301840685000009168}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.02
+  m_Height: 0.085
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &303814105559731673
 GameObject:
   m_ObjectHideFlags: 0
@@ -19094,8 +19153,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7454967996893097853}
   - component: {fileID: 1474592490169961635}
-  - component: {fileID: 1596904190237941656}
-  - component: {fileID: 5791049209164345827}
   m_Layer: 0
   m_Name: RatonCampo
   m_TagString: Untagged
@@ -19116,6 +19173,7 @@ Transform:
   m_Children:
   - {fileID: 2120152003815662180}
   - {fileID: 5282894350020238292}
+  - {fileID: 301840685000009171}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19138,32 +19196,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &1596904190237941656
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3864206091082368278}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.06, z: 0.1}
-  m_Center: {x: 0.125, y: 0.035, z: 0.145}
---- !u!114 &5791049209164345827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3864206091082368278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb23211f6755845e2abb488eeae105dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObjectType: 7
 --- !u!1 &3865861601422878356
 GameObject:
   m_ObjectHideFlags: 0

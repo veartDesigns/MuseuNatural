@@ -57,7 +57,7 @@ public class UserActionController : MonoBehaviour
     {
         float currentTime = Time.time;
         float timePassed = currentTime - _startTime;
-        Debug.Log("Time Without scan: " + timePassed);
+
         if (timePassed >= _secondsToBackToInit)
         {
             _startTime = Time.time;

@@ -99,12 +99,12 @@ public class ActionController : MonoBehaviour
         Debug.Log("ObjectClicked " + objectSelected.name + " " + ClickUI);
 
         int containerObjects = ARContainer.transform.childCount;
-        ObjectInfo objectClickedInfo = objectSelected.transform.GetComponent<ObjectInfo>();
+        ObjectInfo objectClickedInfo = objectSelected.transform.GetComponentInChildren<ObjectInfo>();
 
         if (objectClickedInfo.ObjectType == ObjectType.Lechuza)
         {
             Debug.Log("ANIMATE THAT " + objectSelected.name);
-            objectSelected.GetComponent<Animator>().Play("Protagonist");
+            objectSelected.transform.parent.GetComponent<Animator>().Play("Protagonist");
             return;
         }
         _objectClickedInfo = objectClickedInfo;
@@ -112,7 +112,7 @@ public class ActionController : MonoBehaviour
         for (int i = 0; i < _currentAnimators.Count; i++)
         {
             Animator animator = _currentAnimators[i];
-            ObjectInfo goInfo = animator.gameObject.GetComponent<ObjectInfo>();
+            ObjectInfo goInfo = animator.gameObject.GetComponentInChildren<ObjectInfo>();
 
             if (goInfo.ObjectType == _objectClickedInfo.ObjectType)
             {
@@ -147,7 +147,7 @@ public class ActionController : MonoBehaviour
         {
             Animator animator = _currentAnimators[i];
             GameObject go = animator.gameObject;
-            ObjectInfo objectInfo = go.GetComponent<ObjectInfo>();
+            ObjectInfo objectInfo = go.GetComponentInChildren<ObjectInfo>();
 
 
             if (objectInfo.ObjectType == ObjectType.Egagropila)
@@ -175,7 +175,7 @@ public class ActionController : MonoBehaviour
         {
             Animator animator = _currentAnimators[i];
             GameObject go = animator.gameObject;
-            ObjectInfo objectInfo = go.GetComponent<ObjectInfo>();
+            ObjectInfo objectInfo = go.GetComponentInChildren<ObjectInfo>();
 
             if (_objectClickedInfo.ObjectType == objectInfo.ObjectType)
             {
@@ -304,7 +304,7 @@ public class ActionController : MonoBehaviour
             GameObject objectToAnimate = Instantiate(prefab, ARContainer.transform);
             objectToAnimate.name = prefab.name;
             string animationName = "Idle"; //animations.AnimationName;
-            ObjectInfo objectInfo = objectToAnimate.GetComponent<ObjectInfo>();
+            ObjectInfo objectInfo = objectToAnimate.GetComponentInChildren<ObjectInfo>();
             AnimatorAnnouncer animatorAnnouncer = objectToAnimate.AddComponent<AnimatorAnnouncer>();
             animatorAnnouncer.SetActionController(this, objectInfo);
 
