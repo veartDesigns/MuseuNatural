@@ -1,0 +1,218 @@
+fileFormatVersion: 2
+guid: 422fb3a93c4f94aac9f13daf62900f89
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: g_omoplato_All
+    100004: g_omoplato_CTRL_All_cv
+    100006: g_omoplato_CTRL_All_GRP
+    100008: g_omoplato_CTRL_cv
+    100010: g_omoplato_msh
+    100012: g_omoplatoCTRL_GRP
+    100014: h_femur_All
+    100016: h_femur_All1
+    100018: h_femur_CTRL_All_cv
+    100020: h_femur_CTRL_All_cv 1
+    100022: h_femur_CTRL_All_GRP
+    100024: h_femur_CTRL_All_GRP 1
+    100026: h_femur_CTRL_cv
+    100028: h_femur_CTRL_cv 1
+    100030: h_femur_CTRL_GRP
+    100032: h_femur_CTRL_GRP 1
+    100034: h_femur_msh
+    100036: h_femur_msh 1
+    100038: i_pelvis_All
+    100040: i_pelvis_CTRL_All_GRP
+    100042: i_pelvis_CTRL_cv
+    100044: i_pelvis_CTRL_GRP
+    100046: i_pelvis_msh
+    100048: i_pelvisCTRL_All_cv
+    100050: j_vertebras_All
+    100052: j_vertebras_CTRL_All_cv
+    100054: j_vertebras_CTRL_All_GRP
+    100056: j_vertebras_CTRL_cv
+    100058: j_vertebras_CTRL_GRP
+    100060: j_vertebras_msh
+    100062: k_Clavicula_All
+    100064: k_Clavicula_CTRL_All_cv
+    100066: k_Clavicula_CTRL_All_GRP
+    100068: k_Clavicula_CTRL_cv
+    100070: k_Clavicula_CTRL_GRP
+    100072: k_Clavicula_msh
+    400000: //RootNode
+    400002: g_omoplato_All
+    400004: g_omoplato_CTRL_All_cv
+    400006: g_omoplato_CTRL_All_GRP
+    400008: g_omoplato_CTRL_cv
+    400010: g_omoplato_msh
+    400012: g_omoplatoCTRL_GRP
+    400014: h_femur_All
+    400016: h_femur_All1
+    400018: h_femur_CTRL_All_cv
+    400020: h_femur_CTRL_All_cv 1
+    400022: h_femur_CTRL_All_GRP
+    400024: h_femur_CTRL_All_GRP 1
+    400026: h_femur_CTRL_cv
+    400028: h_femur_CTRL_cv 1
+    400030: h_femur_CTRL_GRP
+    400032: h_femur_CTRL_GRP 1
+    400034: h_femur_msh
+    400036: h_femur_msh 1
+    400038: i_pelvis_All
+    400040: i_pelvis_CTRL_All_GRP
+    400042: i_pelvis_CTRL_cv
+    400044: i_pelvis_CTRL_GRP
+    400046: i_pelvis_msh
+    400048: i_pelvisCTRL_All_cv
+    400050: j_vertebras_All
+    400052: j_vertebras_CTRL_All_cv
+    400054: j_vertebras_CTRL_All_GRP
+    400056: j_vertebras_CTRL_cv
+    400058: j_vertebras_CTRL_GRP
+    400060: j_vertebras_msh
+    400062: k_Clavicula_All
+    400064: k_Clavicula_CTRL_All_cv
+    400066: k_Clavicula_CTRL_All_GRP
+    400068: k_Clavicula_CTRL_cv
+    400070: k_Clavicula_CTRL_GRP
+    400072: k_Clavicula_msh
+    2100000: phong4
+    2100002: phong3
+    2100004: phong5
+    2100006: phong6
+    2100008: phong7
+    2300000: g_omoplato_msh
+    2300002: h_femur_msh
+    2300004: h_femur_msh 1
+    2300006: i_pelvis_msh
+    2300008: j_vertebras_msh
+    2300010: k_Clavicula_msh
+    3300000: g_omoplato_msh
+    3300002: h_femur_msh
+    3300004: h_femur_msh 1
+    3300006: i_pelvis_msh
+    3300008: j_vertebras_msh
+    3300010: k_Clavicula_msh
+    4300000: h_femur_msh
+    4300002: k_Clavicula_msh
+    4300004: h_femur_msh
+    4300006: g_omoplato_msh
+    4300008: i_pelvis_msh
+    4300010: j_vertebras_msh
+    7400000: ExplodeHuesos
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: ExplodeHuesos
+      takeName: Take 001
+      firstFrame: 780
+      lastFrame: 1238
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

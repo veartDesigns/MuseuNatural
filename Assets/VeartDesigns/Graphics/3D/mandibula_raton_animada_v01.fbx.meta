@@ -54,7 +54,7 @@ ModelImporter:
       name: MandibulaRaton
       takeName: Take 001
       firstFrame: 780
-      lastFrame: 1275
+      lastFrame: 1339
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -81,8 +81,8 @@ ModelImporter:
     - serializedVersion: 16
       name: FaseFinal
       takeName: Take 001
-      firstFrame: 1275
-      lastFrame: 1297
+      firstFrame: 1339
+      lastFrame: 1361
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

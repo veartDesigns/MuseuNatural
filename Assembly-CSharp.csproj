@@ -68,7 +68,6 @@
     <Compile Include="Assets\VeartDesigns\Scripts\AnimatorAnnouncer.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\AppEnums.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\CameraFocusController.cs" />
-    <Compile Include="Assets\VeartDesigns\Scripts\ColliderClickDetector.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\CreditsController.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\ForceScaleToZeroInIdleManager.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\FpsDebug.cs" />

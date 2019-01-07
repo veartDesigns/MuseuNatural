@@ -15,5 +15,6 @@ public enum ObjectType
     LironCareto,
     Egagropila,
     Musaraña,
-    Raton
+    Raton,
+    OtrosHuesos
 }

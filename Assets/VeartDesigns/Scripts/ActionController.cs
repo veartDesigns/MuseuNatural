@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ActionController : MonoBehaviour
 {
-    public float VRMarkerScale = 2.24f;
     public Text debugQuality;
 
     public GameObject ARContainer;
@@ -17,6 +16,9 @@ public class ActionController : MonoBehaviour
     public UserActionController UserActionController;
     public Button NextButton;
     public EventSystem EventSystem;
+
+    public Animator ClickUI;
+    public RectTransform ClickUITransform;
     private int _currentSequence = -1;
     private SequenceInfo _currentSequenceInfo;
     private List<Animator> _currentAnimators;
@@ -26,6 +28,7 @@ public class ActionController : MonoBehaviour
     private bool _trackingActive;
     private Coroutine _nextButtonCoroutine;
     private ObjectInfo _objectClickedInfo;
+
     private void Awake()
     {
         ShowEndPanel(false);
@@ -51,8 +54,8 @@ public class ActionController : MonoBehaviour
     {
         ClickOverObject();
 
-        if (_animationRunning)
-        {
+        if(_trackingActive){
+
             UserActionController.RestartCounterTime();
         }
 
@@ -81,8 +84,11 @@ public class ActionController : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(inputPosition);
             RaycastHit hit;
+
             if (Physics.Raycast(ray, out hit, 1000.0f))
             {
+                ClickUI.Play("ClickObject");
+                ClickUITransform.position = inputPosition;
                 ObjectClicked(hit.transform.gameObject);
             }
         }
@@ -90,8 +96,10 @@ public class ActionController : MonoBehaviour
 
     private void ObjectClicked(GameObject objectSelected)
     {
+        Debug.Log("ObjectClicked " + objectSelected.name + " " + ClickUI);
+
         int containerObjects = ARContainer.transform.childCount;
-        ObjectInfo objectClickedInfo = objectSelected.GetComponent<ObjectInfo>();
+        ObjectInfo objectClickedInfo = objectSelected.transform.GetComponent<ObjectInfo>();
 
         if (objectClickedInfo.ObjectType == ObjectType.Lechuza)
         {
@@ -129,10 +137,8 @@ public class ActionController : MonoBehaviour
                     Debug.Log("SECOND PLANE  " + goInfo.ObjectType + "  " + animName);
                     animator.Play(animName);
                 }
-              
             }
         }
-
     }
 
     public void AnimateEgagropila()
@@ -143,16 +149,22 @@ public class ActionController : MonoBehaviour
             GameObject go = animator.gameObject;
             ObjectInfo objectInfo = go.GetComponent<ObjectInfo>();
 
+
             if (objectInfo.ObjectType == ObjectType.Egagropila)
             {
-
+                Debug.Log("ANIMATE EGAGROPILA");
                 animator.Play("Egagropila");
             }
-            if(objectInfo.ObjectType == ObjectType.MandibulaLiron ||
+            if (objectInfo.ObjectType == ObjectType.OtrosHuesos)
+            {
+                Debug.Log("ANIMATE OTROS HUESOS");
+                animator.Play("ExplodeHuesos");
+            }
+            if (objectInfo.ObjectType == ObjectType.MandibulaLiron ||
                objectInfo.ObjectType == ObjectType.MandibulaRaton ||
                objectInfo.ObjectType == ObjectType.MandibulaMusaraña)
             {
-                Debug.Log("ANIMATE MANDIBULA" + _objectClickedInfo.ObjectType);
+                Debug.Log("ANIMATE MANDIBULA");
                 animator.Play("Mandibula"+ _objectClickedInfo.ObjectType);
             }
         }
@@ -184,7 +196,6 @@ public class ActionController : MonoBehaviour
 
     public void AnimationStart(ObjectInfo objectInfo)
     {
-
         //Debug.Log("ANIMATION STARTED");
         _animationRunning = true;
         _animationStartTime = Time.time;

@@ -16,6 +16,7 @@ ModelImporter:
     400008: e_Egagropila_L1
     400010: //RootNode
     2100000: egagropila_L1_rsMaterial
+    2100002: egagropila_L1_rsMaterial1
     2300000: e_Egagropila_L1
     3300000: e_Egagropila_L1
     4300000: e_Egagropila_L1
@@ -53,8 +54,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Egagropila
       takeName: Take 001
-      firstFrame: 732
-      lastFrame: 1300
+      firstFrame: 780
+      lastFrame: 1269
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
