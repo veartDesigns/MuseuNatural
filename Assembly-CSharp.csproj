@@ -87,6 +87,7 @@
     <Compile Include="Assets\VeartDesigns\Scripts\LechuzaVomito.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\MainController.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\ObjectInfo.cs" />
+    <Compile Include="Assets\VeartDesigns\Scripts\ScaleSetterManager.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Sequences\AllSequenceInfos.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\Sequences\SequenceInfo.cs" />
     <Compile Include="Assets\VeartDesigns\Scripts\UserActionController.cs" />

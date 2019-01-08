@@ -69,6 +69,7 @@ public class ActionController : MonoBehaviour
     {
         Vector2 inputPosition = Vector2.zero;
         bool click = false;
+
         if (Input.GetMouseButtonDown(0))
         {
             click = true;

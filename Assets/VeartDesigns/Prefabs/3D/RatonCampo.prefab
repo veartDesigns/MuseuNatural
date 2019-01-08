@@ -2110,7 +2110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1566511809483836232}
   - component: {fileID: 7088898070112979820}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: b_RatonDeCampo_r_ojo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22470,7 +22470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8025841187232411586}
   - component: {fileID: 2866140222901644905}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: b_RatonDeCampo_l_ojo
   m_TagString: Untagged
   m_Icon: {fileID: 0}

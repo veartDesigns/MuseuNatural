@@ -3071,7 +3071,7 @@ ModelImporter:
       name: Protagonist
       takeName: Take 001
       firstFrame: 450
-      lastFrame: 650
+      lastFrame: 671
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

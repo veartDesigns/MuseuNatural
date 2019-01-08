@@ -2061,7 +2061,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5502236180785080031}
   - component: {fileID: 5326610091198256031}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: a_ojo_L_lechuza_msh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
