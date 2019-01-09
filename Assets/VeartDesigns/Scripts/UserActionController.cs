@@ -22,30 +22,6 @@ public class UserActionController : MonoBehaviour
         CheckTime();
     }
 
-    private bool CheckUserMovements()
-    {
-        Vector3 dir = Vector3.zero;
-        dir.x = -Input.acceleration.y;
-        dir.z = Input.acceleration.x;
-        dir.y = Input.acceleration.z;
-
-        float roundedX = Mathf.Round(dir.x * 100) / 100;
-        float roundedY = Mathf.Round(dir.y * 100) / 100; ;
-        float roundedZ = Mathf.Round(dir.z * 100) / 100; ;
-
-        float allRounds = roundedX + roundedY+ roundedZ;
-        float difference = allRounds - (_oldAccelerometer.x + _oldAccelerometer.y + _oldAccelerometer.z);
-        difference = Mathf.Abs(difference);
-        bool movingDevice = Mathf.Abs(difference) >= Sensibility;
-
-        DebugGyro.text = "Is Moving:" + movingDevice + "\n"
-            + "difference " + difference;
-            
-        _oldAccelerometer = new Vector3(roundedX, roundedY, roundedZ);
-
-        return movingDevice;
-    }
-
     public void RestartCounterTime(){
 
 //        Debug.Log("RestartCounterTime");

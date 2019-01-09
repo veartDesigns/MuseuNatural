@@ -2,12 +2,10 @@
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/VeartDesigns/Scripts/ActionController.cs">
     <Files>
-      <File FileName="Assets/StoryEndsAnnouncer.cs" Line="11" Column="34" />
+      <File FileName="Assets/StoryEndsAnnouncer.cs" Line="5" Column="49" />
       <File FileName="Assets/VeartDesigns/Scripts/ForceScaleToZeroInIdleManager.cs" Line="8" Column="72" />
       <File FileName="Assets/VeartDesigns/Scripts/LastAnimationStarter.cs" Line="10" Column="1" />
       <File FileName="Assets/Vuforia/Scripts/DefaultTrackableEventHandler.cs" Line="123" Column="41" />
-      <File FileName="Assets/VeartDesigns/Scripts/FpsDebug.cs" Line="29" Column="30" />
-      <File FileName="Assets/VeartDesigns/Scripts/UserActionController.cs" Line="61" Column="9" />
       <File FileName="Assets/VeartDesigns/Scripts/ObjectInfo.cs" Line="19" Column="16" />
       <File FileName="Assets/VeartDesigns/Scripts/Language/LocalizeString.cs" Line="16" Column="1" />
       <File FileName="Assets/VeartDesigns/Scripts/AnimationConrollerManager.cs" Line="13" Column="6" />

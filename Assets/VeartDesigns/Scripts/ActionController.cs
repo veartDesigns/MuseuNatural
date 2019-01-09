@@ -28,9 +28,10 @@ public class ActionController : MonoBehaviour
     private bool _trackingActive;
     private Coroutine _nextButtonCoroutine;
     private ObjectInfo _objectClickedInfo;
-
+    private Dictionary<Collider, bool> _collidersOnHide;
     private void Awake()
     {
+        _collidersOnHide = new Dictionary<Collider, bool>();
         ShowEndPanel(false);
         ARContainer.transform.localScale *= AllSequenceInfos.ActionContainerSize;
     }
@@ -269,6 +270,29 @@ public class ActionController : MonoBehaviour
         for (int i = 0; i < _currentAnimators.Count; i++)
         {
             Animator animator = _currentAnimators[i];
+            Collider colider = animator.gameObject.GetComponentInChildren<Collider>();
+
+            if(colider != null){
+
+                bool coliderEnabled = colider.enabled;
+
+                if (!enable)
+                {
+                    _collidersOnHide[colider] = coliderEnabled;
+                    //Debug.Log("HIDE COLIDERS " + colider.name + "  realState " + coliderEnabled);
+                    colider.enabled = false;
+                }
+                else
+                {
+                    if (_collidersOnHide.Count != 0)
+                    {
+                        bool coliderInfo = _collidersOnHide[colider];
+                       //Debug.Log("RECOVER COLIDERS " + colider.name + "  realState " + coliderInfo);
+                        colider.enabled = coliderInfo;
+                    }
+                }
+            }
+
             animator.enabled = enable;
         }
     }
