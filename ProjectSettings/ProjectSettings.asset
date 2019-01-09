@@ -143,7 +143,7 @@ PlayerSettings:
   enableFrameTimingStats: 1
   useHDRDisplay: 0
   m_ColorGamuts: 00000000
-  targetPixelDensity: 280
+  targetPixelDensity: 170
   resolutionScalingMode: 1
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
